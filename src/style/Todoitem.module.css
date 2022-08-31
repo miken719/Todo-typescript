@@ -4,3 +4,9 @@
     padding: 1rem;
     background-color: #f7f5ef;
   }
+  .itemButton{
+    float: right;
+    margin: 2px;
+    border-radius: "10px";
+  }
+  

@@ -23,6 +23,20 @@ export const postApi = (actionData) => {
     .then((responseData) => responseData);
 };
 
+export const putApi = async (id, updated) => {
+  const api = await fetch(
+    `https://todo-typescript-c0a5c-default-rtdb.firebaseio.com/todo/${id}.json`,
+    {
+      method: "PUT",
+      body: JSON.stringify({
+        text: updated,
+      }),
+    }
+  );
+  const data = await api.json();
+  return data;
+};
+
 export const deleteApi = (id) => {
   const api = fetch(
     `https://todo-typescript-c0a5c-default-rtdb.firebaseio.com/todo/${id}.json`,
@@ -32,6 +46,5 @@ export const deleteApi = (id) => {
   )
     .then((res) => res.json())
     .catch((error) => error);
-
   return api;
 };

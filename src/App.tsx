@@ -5,12 +5,14 @@ import NewTodosForm from "./components/NewTodo";
 import Todo from "./components/Todo";
 import Todos from "./models/todo";
 import { addTodo } from "./store/action";
-import style from '../src/style/Todos.module.css'
+import style from "../src/style/Todos.module.css";
+
 function App() {
   const [newTodo, setNewTodo] = useState<Todos[]>([]);
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
- const [message , setMessage] = useState("")
+  const [message, setMessage] = useState("");
+
   const addTodoHandler = (todoText: string) => {
     const todos = new Todos(todoText, Math.random() * 100);
     setNewTodo((currentState) => {
@@ -18,20 +20,30 @@ function App() {
     });
     dispatch(addTodo(todos));
     getApi(setIsLoading);
-    setMessage("Adding...")
+
+    setMessage("Adding...");
   };
+
   const removeTodoHandler = (todoID: number) => {
     getApi(setIsLoading);
-    setMessage("Removing...")
+    setMessage("Removing...");
   };
+
+  const handleUpdate = (text :string) => {
+    getApi(setIsLoading);
+    setMessage("Updating...");
+    // hide(false);
+    // putApi(props.objectKey[props.index], updatedText);
+  };
+
   return (
     <div className="App">
       {" "}
       <NewTodosForm onAddTodo={addTodoHandler} />
       {isLoading ? (
-        <div  className={style.todos}>{message}</div>
+        <div className={style.todos}>{message}</div>
       ) : (
-        <Todo items={newTodo} removeTodo={removeTodoHandler} />
+        <Todo items={newTodo} removeTodo={removeTodoHandler} handleUpdate={handleUpdate} />
       )}
     </div>
   );

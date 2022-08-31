@@ -13,6 +13,7 @@ export interface containerProps {
 const Todo: React.FC<{
   items: Todos[];
   removeTodo: (todoID: number) => void;
+  handleUpdate: (text: string) => void;
 }> = (props) => {
   // const { data }: any = useGetTodoDataQuery("");
   const TodoData = useSelector((state: RootState) => state.todo.addTodo);
@@ -32,9 +33,11 @@ const Todo: React.FC<{
     <div>
       <ul className={style.todos}>
         {TodoData === null || TodoData.length === 0 ? (
-          <div>Please add new todos</div>
+          <div className={style.message}>
+            Nothing to show!!! Add new tasks...
+          </div>
         ) : isLoading ? (
-          <img src="/loader.gif" />
+          <img src="/loader.gif" alt="loader" />
         ) : (
           Object.values(TodoData)?.map((item: any, index: number) => {
             return (
@@ -42,6 +45,7 @@ const Todo: React.FC<{
                 id={item?.id}
                 text={item?.text}
                 removeTodo={props.removeTodo}
+                updateTodo={props.handleUpdate}
                 objectKey={Object.keys(TodoData)}
                 index={index}
               />
