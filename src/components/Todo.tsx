@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getApi } from "../api/utils";
 import Todos from "../models/todo";
@@ -16,13 +16,13 @@ const Todo: React.FC<{
   // const { data }: any = useGetTodoDataQuery("");
   const TodoData = useSelector((state: RootState) => state.todo.addTodo);
 
-
+  const [isLoading, setIsLoading] = useState(false)
   const dispatch = useDispatch();
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     (async () => {
-      const todos = await getApi();
+      const todos = await getApi(setIsLoading);
       dispatch(getTodo(todos));
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -33,7 +33,7 @@ const Todo: React.FC<{
       <ul className={style.todos}>
         {TodoData === null || TodoData.length === 0 ? (
           <div>Not Found</div>
-        ) : (
+        ) : isLoading ? <div>Loading.. </div> :(
           Object.values(TodoData)?.map((item: any, index: number) => {
             return (
               <TodoItems
