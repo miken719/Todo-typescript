@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { deleteApi, postApi } from "../api/utils";
+import Todos from "../models/todo";
 export interface CounterState {
   addTodo: string[];
 }
@@ -12,7 +13,7 @@ const todoSlice = createSlice({
   name: "todo",
   initialState,
   reducers: {
-    addTodo: (state, { payload }: PayloadAction<any>) => {
+    addTodo: (state, { payload }: PayloadAction<Todos>) => {
       const actionData = payload;
       postApi(actionData);
     },
@@ -21,7 +22,7 @@ const todoSlice = createSlice({
       deleteApi(todoId);
     },
 
-    getTodo: (state, { payload }: PayloadAction<any>) => {
+    getTodo: (state, { payload }: PayloadAction<Todos | any>) => {
       return {
         ...state,
         addTodo: payload,

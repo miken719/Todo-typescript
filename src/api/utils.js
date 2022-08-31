@@ -3,9 +3,7 @@ export const getApi = async (loading) => {
   const api = await fetch(
     "https://todo-typescript-c0a5c-default-rtdb.firebaseio.com/todo.json"
   );
-
   const data = await api.json();
-
   loading(false);
   return data;
 };

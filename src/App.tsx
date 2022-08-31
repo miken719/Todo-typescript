@@ -20,7 +20,6 @@ function App() {
     });
     dispatch(addTodo(todos));
     getApi(setIsLoading);
-
     setMessage("Adding...");
   };
 
@@ -32,8 +31,6 @@ function App() {
   const handleUpdate = (text :string) => {
     getApi(setIsLoading);
     setMessage("Updating...");
-    // hide(false);
-    // putApi(props.objectKey[props.index], updatedText);
   };
 
   return (
