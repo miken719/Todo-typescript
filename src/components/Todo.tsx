@@ -4,11 +4,12 @@ import { getApi } from "../api/utils";
 import Todos from "../models/todo";
 import { getTodo } from "../store/action";
 
-
 import { RootState } from "../store/store";
 import style from "../style/Todos.module.css";
 import TodoItems from "./TodoItems";
-
+export interface containerProps {
+  loaderImg: string;
+}
 const Todo: React.FC<{
   items: Todos[];
   removeTodo: (todoID: number) => void;
@@ -16,7 +17,7 @@ const Todo: React.FC<{
   // const { data }: any = useGetTodoDataQuery("");
   const TodoData = useSelector((state: RootState) => state.todo.addTodo);
 
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,13 +28,14 @@ const Todo: React.FC<{
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   return (
     <div>
       <ul className={style.todos}>
         {TodoData === null || TodoData.length === 0 ? (
-          <div>Not Found</div>
-        ) : isLoading ? <div>Loading.. </div> :(
+          <div>Please add new todos</div>
+        ) : isLoading ? (
+          <img src="/loader.gif" />
+        ) : (
           Object.values(TodoData)?.map((item: any, index: number) => {
             return (
               <TodoItems
