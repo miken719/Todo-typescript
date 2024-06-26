@@ -1,45 +1,72 @@
-{
-  "name": "todo-app",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.8.5",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.11.56",
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-redux": "^8.0.2",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.8.2",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
-}
+# ToDo App
+
+A simple and efficient ToDo application built with React, Firebase, and TypeScript.
+
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+- User Authentication (Firebase Auth)
+- Create, Read, Update, Delete (CRUD) ToDos
+- Real-time synchronization with Firebase Firestore
+- Responsive design
+- Type-safe code with TypeScript
+
+## Installation
+
+### Prerequisites
+
+- Node.js (>= 16)
+- npm or yarn
+
+### Steps
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/miken719/Todo-typescript.git
+    ```
+
+2. Navigate to the project directory:
+    ```bash
+    cd todo-app
+    ```
+
+3. Install the dependencies:
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+
+## Configuration
+
+1. Create a Firebase project and setup Firestore and Authentication.
+
+2. Create a `.env` file in the root of the project and add your Firebase configuration:
+
+    ```env
+    REACT_APP_FIREBASE_API_KEY=your_api_key
+    REACT_APP_FIREBASE_AUTH_DOMAIN=your_auth_domain
+    REACT_APP_FIREBASE_PROJECT_ID=your_project_id
+    REACT_APP_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+    REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+    REACT_APP_FIREBASE_APP_ID=your_app_id
+    ```
+
+## Usage
+
+### Running the App
+
+To start the development server, run:
+
+```bash
+npm start
+# or
+yarn start
